@@ -44,6 +44,9 @@ Rails.application.configure do
   # Set to :debug to see everything in the log.
   config.log_level = :info
 
+  # In Rails 3.x, you can prevent initializing your application and connecting to the database
+  config.assets.initialize_on_precompile = false
+
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
 

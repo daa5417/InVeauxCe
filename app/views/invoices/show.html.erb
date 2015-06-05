@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @invoice.title %></h1>
+
+<% if @invoice.invoice_items? %>
+	<ul>
+		<% @invoice.invoice_items.each do |item| %>
+			<li><%= item %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+<%= link_to 'Back', invoices_path %>
