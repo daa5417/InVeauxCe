@@ -1,8 +1,5 @@
 <h1>Customer Invoices</h1>
 <hr/>
-<h2>Create new invoice</h2>
-<%= render 'form' %>
-<hr/>
 <table>
   <thead>
     <tr>
@@ -13,11 +10,13 @@
   <tbody>
     <% @invoices.each do |invoice| %>
       <tr>
-        <td><%= invoice.title %></td>
-        <td>&nbsp;</td>
-        <td><%= link_to 'Show', invoice %></td>
-        <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
-        <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <ul>
+          <td><%= invoice.title %></td>
+          <td>&nbsp;</td>
+          <td><%= link_to 'Show', invoice %></td>
+          <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
+          <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </ul>
       </tr>
     <% end %>
   </tbody>

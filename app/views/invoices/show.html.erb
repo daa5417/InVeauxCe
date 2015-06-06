@@ -1,13 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @invoice.title %></h1>
+<hr />
+<p><b>Due Date:</b> <%=@invoice.due_date %></p>
+<p><b>Charge Amount:</b> $<%=@invoice.charge_amount %></p>
+<p><b>Work Items:</b> <%=@invoice.work_items %></p>
 
-<% if @invoice.invoice_items? %>
+<% if false %>
+<% if @invoice.work_items? %>
 	<ul>
-		<% @invoice.invoice_items.each do |item| %>
+		<% @invoice.work_items.each do |item| %>
 			<li><%= item %></li>
 		<% end %>
 	</ul>
+<% end %>
 <% end %>
 
 <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
