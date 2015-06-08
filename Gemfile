@@ -6,6 +6,12 @@ gem 'rails', '4.1.8'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 gem 'pg'
+#Use ActiveAdmin for creating admin model
+gem 'activeadmin', github: 'gregbell/active_admin'
+#Bootsrap form helpers
+gem 'bootstrap_form'
+#Use CanCan for authorization
+gem 'cancan'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -38,7 +44,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
-
+#Use Devis for authentication
 gem 'devise'
 
 gem 'figaro'

@@ -1,4 +1,4 @@
-<%= form_for(@invoice) do |f| %>
+<%= bootstrap_form_for(@invoice, label_errors: true) do |f| %>
   <% if @invoice.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
@@ -11,16 +11,11 @@
     </div>
   <% end %>
 
-  <%= f.label :title %><br/>
-  <%= f.text_field :title %><br/>
-  <%= f.label :due_date %><br/>
-  <%= f.text_field(:due_date, placeholder: 'mm/dd/yyyy') %><br/>
-  <%= f.label :charge_amount %><br/>
-  <%= f.number_field :charge_amount %><br/>
-  <%= f.label :work_items %><br/>
-  <%= f.text_area :work_items %><br/>
-
+  <%= f.text_field :title %><br />
+  <%= f.text_field(:due_date, placeholder: 'mm/dd/yyyy') %><br />
+  <%= f.number_field :charge_amount %><br />
+  <%= f.text_area :work_items %><br />
   <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.submit class: "btn btn-primary" %><br />
+</div>
 <% end %>

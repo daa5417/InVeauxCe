@@ -1,4 +1,4 @@
-<h1>Customer Invoices</h1>
+<h1 class="text-center">Customer Invoices</h1>
 <hr/>
 <table>
   <thead>
@@ -10,18 +10,18 @@
   <tbody>
     <% @invoices.each do |invoice| %>
       <tr>
-        <ul>
-          <td><%= invoice.title %></td>
-          <td>&nbsp;</td>
-          <td><%= link_to 'Show', invoice %></td>
-          <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
-          <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <ul class='list-inline'>
+          <li><h4><%= invoice.title %></h4></li>
+          <li>&nbsp;</li>
+          <li><%= link_to 'Show', invoice %></li>
+          <li><%= link_to 'Edit', edit_invoice_path(invoice) %></li>
+          <li><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></li>
         </ul>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
+<br />
 
-<%= link_to 'New Invoice', new_invoice_path %>
+  <%= link_to 'New Invoice', new_invoice_path %>

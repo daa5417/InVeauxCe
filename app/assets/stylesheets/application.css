@@ -11,5 +11,17 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require bootstrap
+ *= require bootstrap-theme
+ *= require bootstrap.min
+ *= require rails_bootstrap_forms
  *= require_self
  */
+
+
+
+.app-header {
+	background-color: #C0C0C0;
+	padding: 3rem 0;
+	margin-bottom: 1rem;
+}
