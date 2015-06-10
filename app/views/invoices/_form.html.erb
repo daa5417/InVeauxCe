@@ -10,12 +10,21 @@
       </ul>
     </div>
   <% end %>
+<div class="col-md-8">
+  <%= f.text_field :title %>
+  <%= f.text_field(:due_date, placeholder: 'mm/dd/yyyy') %>
+  <%= f.number_field :charge_amount %>
+  <%= f.text_area :work_items %>
+  <div class="form-group">
+    <%= f.select :user_id,
+      options_from_collection_for_select(User.where(admin: false).collect, "id", "email", @invoice.user_id),
+      {include_blank: true},
+      {class: "form-control"} %>
+  </div>
 
-  <%= f.text_field :title %><br />
-  <%= f.text_field(:due_date, placeholder: 'mm/dd/yyyy') %><br />
-  <%= f.number_field :charge_amount %><br />
-  <%= f.text_area :work_items %><br />
   <div class="actions">
     <%= f.submit class: "btn btn-primary" %><br />
 </div>
+</div>
+
 <% end %>

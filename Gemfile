@@ -7,11 +7,11 @@ gem 'rails', '4.1.8'
 # gem 'sqlite3'
 gem 'pg'
 #Use ActiveAdmin for creating admin model
-gem 'activeadmin', github: 'gregbell/active_admin'
+# gem 'activeadmin', github: 'gregbell/active_admin'
 #Bootsrap form helpers
 gem 'bootstrap_form'
 #Use CanCan for authorization
-gem 'cancan'
+# gem 'cancan'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets

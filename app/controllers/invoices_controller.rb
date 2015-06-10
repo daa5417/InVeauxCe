@@ -1,17 +1,24 @@
 class InvoicesController < ApplicationController
   before_action :authenticate_user!
+  before_action :confirm_admin, only: [:new, :create, :edit, :udpate, :destroy]
   before_action :set_invoice, only: [:show, :edit, :update, :destroy]
-  before_action :confirm_owner, only: [:show, :edit, :update, :destroy]
+  # before_action :confirm_owner, only: [:show, :edit, :update, :destroy]
+  
 
   respond_to :html
 
   def index
-    @invoice = Invoice.new(user_id: current_user.id)
-    @invoices = Invoice.where user_id: current_user.id
+    if current_user.admin?
+      @invoices = Invoice.all
+    else
+      @invoices = Invoice.where user_id: current_user.id
+    end
   end
 
   def show
-    respond_with(@invoice)
+    if current_user.admin? === false && current_user.id != @invoice.user_id
+      render :unauthorized
+    end
   end
 
   def new
@@ -20,6 +27,9 @@ class InvoicesController < ApplicationController
   end
 
   def edit
+  end
+
+  def unauthorized
   end
 
   def create
@@ -62,10 +72,14 @@ class InvoicesController < ApplicationController
     end
 
     def invoice_params
-      params[:invoice].permit(:title, :due_date, :charge_amount, :work_items)
+      params[:invoice].permit(:title, :due_date, :charge_amount, :work_items, :user_id)
     end
 
-    def confirm_owner
-      redirect_to invoices_url, notice: "You are not allowed to access that invoice." if current_user.id != @invoice.user_id
+    # def confirm_owner
+    #   redirect_to invoices_url, notice: "You are not allowed to access that invoice." if current_user.id != @invoice.user_id
+    # end
+
+    def confirm_admin
+      render :unauthorized if current_user.admin? === false
     end
 end
