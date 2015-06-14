@@ -1,0 +1,23 @@
+<h1>Admin</h1>
+<hr/>
+<h3>Users in this application:</h3>
+<!-- Find me in app/views/admin/index.html.erb -->
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Email</th>
+			<th>Admin?</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @users.each do |u| %>
+		<tr>
+			<td><%= u.email %></td>
+			<td><%= u.admin %></td>
+			<td><%= link_to "View", admin_view_user_path(:id => u.id), class: "btn btn-sm btn-primary" %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

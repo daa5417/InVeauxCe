@@ -1,8 +1,7 @@
 class InvoicesController < ApplicationController
   before_action :authenticate_user!
   before_action :confirm_admin, only: [:new, :create, :edit, :udpate, :destroy]
-  before_action :set_invoice, only: [:show, :edit, :update, :destroy]
-  # before_action :confirm_owner, only: [:show, :edit, :update, :destroy]
+  before_action :set_invoice, only: [:show, :edit, :update, :destroy, :send_form, :send_invoice]
   
 
   respond_to :html
@@ -19,6 +18,7 @@ class InvoicesController < ApplicationController
     if current_user.admin? === false && current_user.id != @invoice.user_id
       render :unauthorized
     end
+    @invoices = @user_id.invoices
   end
 
   def new
@@ -64,6 +64,13 @@ class InvoicesController < ApplicationController
       format.html { redirect_to invoices_url, notice: 'Invoice was successfully deleted.' }
       format.json { head :no_content }
     end
+  end
+
+  def send_invoice
+    to_email = params['to_email']
+    message = params['message']
+    ListMailer.email_invoice(@invoice, current_user.email, to_email, message).deliver
+    redirect_to @invoice, notice: "The invoice has been sent!"
   end
 
   private

@@ -127,7 +127,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap_form
   coffee-rails (~> 4.0.0)
-  devise
+  devise (~> 3.5.1)
   figaro
   jbuilder (~> 2.0)
   jquery-rails

@@ -1,0 +1,14 @@
+<h1>Send this invoice to a client:</h1>
+
+<%= form_for @invoice, url: {action: "send_invoice"}, method: "post" do |f| %>
+	<div class="form-group">
+		<label class="control-label" for="to_email">Client email:</label>
+		<input class="form-control" type="text" name="to_email" id="to_email"/>
+	</div>
+	<div class="form-group">
+		<label class-"control-label" for="message">Message to client:</label>
+		<textarea class="form-control" name="message" id="message" rows="10"></textarea>
+	</div>
+	<button type="submit" class="btn btn-primary">Send!</button>
+	<%= link_to 'Cancel', @invoice, class: "btn btn-default" %>
+<% end %>

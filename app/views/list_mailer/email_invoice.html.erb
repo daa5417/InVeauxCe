@@ -1,0 +1,18 @@
+<h1><%= @sender %> has sent you an invoice!</h1>
+<p>
+  <%= @message %>
+</p>
+
+<div>
+	<h2><%= @invoice.title %></h2>
+</div>
+
+<hr />
+
+<p><b>Due Date:</b> <%= @invoice.due_date %></p>
+<p><b>Charge Amount:</b> $<%= @invoice.charge_amount %></p>
+<p><b>Work Items:</b> <%= @invoice.work_items %></p>
+<p><b>User:</b> <%= @invoice.user.email %></p>
+
+<p>Thank you!</p>
+<p>Deborah Anderson</p>

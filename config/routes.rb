@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  
+  get 'admin/unauthorized'
+  get 'admin/new_user'
+  post 'admin/create' => 'admin#create', :as => 'users'
+  get 'admin/' => 'admin#index', :as => 'admin_root'
+  get 'admin/:id' => 'admin#user', :as => 'admin_view_user'
+
+
   devise_for :users
   resources :invoices
 
@@ -7,6 +15,9 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root "invoices#index"
+
+  get 'invoices/:id/send' => 'invoices#send_form', as: "send_form"
+  post 'invoices/:id/send' => 'invoices#send_invoice'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
